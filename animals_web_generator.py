@@ -10,10 +10,10 @@ def load_data(file_path):
 # Load animal data
 animals_data = load_data('animals_data.json')
 
-# Build output string instead of printing
-output = ""
 
-for animal in animals_data:
+def serialize_animal(animal):
+    """Converts one animal object into an HTML list item."""
+    output = ""
 
     output += '<li class="cards__item">\n'
 
@@ -33,6 +33,15 @@ for animal in animals_data:
 
     output += '</p>\n'
     output += '</li>\n'
+
+    return output
+
+
+# Build output string instead of printing
+output = ""
+
+for animal in animals_data:
+    output += serialize_animal(animal)
 
 # Read HTML template
 with open("animals_template.html", "r") as file:
